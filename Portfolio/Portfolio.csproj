@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.3" />
+        <PackageReference Include="Npgsql.EntityFrameWorkCore.PostgreSQL" Version="6.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.bundle.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.bundle.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.bundle.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.bundle.min.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.esm.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.esm.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.esm.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.esm.min.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.min.js.map" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Pages\Contact.cshtml" />
+      <Content Remove="Pages\Contac.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Pages\Contact.cshtml.cs" />
+      <Compile Remove="Pages\Contact.razor.cs" />
+    </ItemGroup>
+
+</Project>

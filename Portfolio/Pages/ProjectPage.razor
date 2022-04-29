@@ -1,0 +1,52 @@
+﻿@page "/Project/{Id:guid}"
+@using Portfolio.Data
+@inject ProjectService ProjectService
+
+
+@if (_project == null)
+{
+    <em>Loading project, please wait....</em>
+}
+else
+{ 
+    <div class="row">
+        <div class="col-md-8">
+            <img class="project center"  src="@Path(_project.Images[0])"/>
+        </div>
+        <div class="col-md-4">
+            <h2>@_project.Name</h2>
+            <p class=header>Description</p>
+            <p class="project">@_project.Description</p>
+            <p class="header">Technical Information</p>
+            <p class="project">@_project.TecnicalInfo</p>
+            <p class=header>My Contributions</p>
+            @foreach (string contrib in _project.Contribution.Split("\n")){
+                <p class="project bullets">• @contrib</p>
+            }
+            
+        </div>
+        
+    </div>
+    @_project.ExtraInfo
+    <div>
+      
+    </div>
+}
+
+
+@code {
+
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private Project? _project;
+
+    private string Path(string fileName) => "assets/images/" + fileName;
+    
+    protected async override Task OnInitializedAsync()
+    {
+        _project = await ProjectService.GetProjectFromIdAsync(Id);
+
+    }
+
+}

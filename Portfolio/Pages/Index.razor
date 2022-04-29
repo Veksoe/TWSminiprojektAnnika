@@ -1,0 +1,45 @@
+@page "/"
+@using Portfolio.Data
+@inject ProjectService ProjectService
+
+<PageTitle>A.V. Portfolio</PageTitle>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+@if (_projects.Count == 0)
+{
+    <div>Loading projects, please wait....</div>
+}
+else{
+@foreach (Project project in _projects)
+{
+    <div class="col">
+        <div class="card size rounded-0">
+            <a href="@("Project/" + project.Id)"><img class="card-img-top" src="@Path(project.Images[0])" alt="Card image cap"></a>
+            <div class="card-img-overlay hover rounded-0">
+                <h5 class="card-title">@project.Name</h5>
+                <p class="summary">@project.Summary</p>
+
+            </div>
+            </div>
+           
+    </div>
+}
+}
+</div>
+
+
+@code
+{
+    
+    private string Path(string fileName) => "assets/images/" + fileName;
+
+    
+    List<Project> _projects = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+       await Task.Delay(2000);
+        _projects = await ProjectService.GetAllProjectsAsync();
+    }
+}
