@@ -11,7 +11,6 @@ builder.Services.AddServerSideBlazor();
 
 builder.Services.AddDbContext<DatabaseContext>(optionsBuilder => optionsBuilder.UseNpgsql(
     "Server=molae.duckdns.org;Port=43294;Database=Project;User Id=postgres;Password=hellofellow"));
-builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddScoped<ProjectService>();
 
 var app = builder.Build();
